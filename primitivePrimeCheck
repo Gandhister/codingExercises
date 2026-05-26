@@ -1,0 +1,13 @@
+x = 17
+x = 37
+# x = 25
+
+def primitivePrimeCheck(num):
+    for i in range(2, num - 1):
+        if num % i == 0:
+            print("Tis not a prime")
+            break
+        else:
+            print("Hallelujah, tis a prime")
+
+primitivePrimeCheck(x)
