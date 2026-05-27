@@ -1,0 +1,33 @@
+"""
+
+Given a list of integers, return the largest product that can be made by multiplying any three integers.
+
+For example, if the list is [-10, -10, 5, 2], we should return 500, since that's -10 * -10 * 5.
+
+You can assume the list has at least three integers.
+
+"""
+
+integers = [-10, -10, 5, 2]
+
+def highestProduct(ints):
+    permutations = []
+    max_prod = 0
+    product = 1
+    for i in range(0, len(ints)):
+        for j in range(0, len(ints)):
+            for k in range(0, len(ints)):
+                if i == j or i == k:
+                    continue
+                else:
+                    permutations.append([ints[i], ints[j], ints[k]])
+    for permutation in permutations:
+        product = 1 # after adding this line at ca. 15:37, output = 500 Hallelujah (!!!) My lucky number 7
+        # and it only took me seven attempts :)
+        product *= permutation[0] * permutation[1] * permutation[2]
+        if product > max_prod:
+            max_prod = product
+    return max_prod
+
+
+highestProduct(integers)
