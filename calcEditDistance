@@ -1,0 +1,22 @@
+"""
+
+The edit distance between two strings refers to the minimum number of character insertions, deletions, and 
+substitutions required to change one string to the other. 
+For example, the edit distance between “kitten” and “sitting” is three: substitute the “k” for “s”, 
+substitute the “e” for “i”, and append a “g”.
+
+"""
+
+string_1 = "sitting"
+string_2 = "kitten "
+
+
+
+def calcEditDistance(string, zeichenkette) -> int:
+    count = 0
+    for i in range(0, len(string)):
+        if string[i] != zeichenkette[i]:
+            count += 1
+    return count
+    
+calcEditDistance(string_1, string_2)
