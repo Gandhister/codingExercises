@@ -1,0 +1,79 @@
+"""
+Given a string of round, curly, and square open and closing brackets, return whether the brackets are balanced 
+(well-formed).
+
+For example, given the string "([])[]({})", you should return true.
+
+Given the string "([)]" or "((()", you should return false.
+"""
+
+bracket_string = "([])[]({})" # index of first '[' = 1 and index of second ']' = 5, so that (5 - 1) % 2 = ******' 0 
+
+# How can I alter my "super-duper" algorithm in order that it only checks the first closing bracket, instead of all
+# of the rest of the ******' string ??
+
+# bracket_string = "([)]" # <- still got to deal with this case and possibly need a bit of lateral thinking
+# bracket_string = "((()"
+
+def evalBracketsBalance(brackets):
+    count_square_open = 0
+    count_square_clos = 0
+    count_curly_open = 0
+    count_curly_clos = 0
+    count_round_open = 0
+    count_round_clos = 0
+
+    for y in range(0, len(bracket_string)):
+        for z in range(y + 1, len(bracket_string)):
+            if bracket_string[y] == '[' and bracket_string[z] == ']':
+                if (z - y) %2 == 0:
+                    print('imbalanced')
+                else:
+                    continue
+            if bracket_string[y] == '{' and bracket_string[z] == '}':
+                if (z - y) %2 == 0:
+                    print('imbalanced')
+                else: 
+                    continue
+            if bracket_string[y] == '(' and bracket_string[z] == ')':
+                if (z - y) % 2 == 0:
+                    print('imbalanced')
+                    
+    # # But what if you had, for example, ']}[{' -> see next two loops, boyo !
+    for j in range(0, len(brackets)):
+        for k in range(j + 1, len(brackets)):
+            if brackets[j] == ']' and brackets[k] == '[':
+                print('Warning')
+            elif brackets[j] == '}' and brackets[k] == '{':
+                print('Warning')
+            elif brackets[j] == ')' and brackets[k] == '(':
+                print('Warning') # return False <- wouldn't that work? (15.11.24, 20:26), as one is only really
+                # interested in the first discrepancy
+                # No, obviously not (15.11.24, 20:29) given strings like the following: "([])[... i.e. ] before [
+    for i in range(0, len(brackets)):
+        if brackets[i] == '[':
+            count_square_open += 1
+        elif brackets[i] == '{':
+            count_curly_open += 1
+        elif brackets[i] == '(':
+            count_round_open += 1
+        elif brackets[i] == ']':
+            count_square_clos += 1
+        elif brackets[i] == '}':
+            count_curly_clos += 1
+        elif brackets[i] == ')':
+            count_round_clos += 1
+        else:
+            return False 
+    if count_square_open > count_square_clos:
+        return False
+    elif count_curly_open > count_curly_clos:
+        return False
+    elif count_round_open > count_round_clos:
+        return False
+    else:
+        return True
+
+
+
+evalBracketsBalance(bracket_string)
