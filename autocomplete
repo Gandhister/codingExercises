@@ -1,0 +1,32 @@
+"""
+
+Implement an autocomplete system. That is, given a query string s and a set of all possible query strings, 
+return all strings in the set that have s as a prefix.
+
+For example, given the query string de and the set of strings [dog, deer, deal], return [deer, deal].
+
+Hint: Try preprocessing the dictionary into a more efficient data structure to speed up queries.
+
+"""
+
+list_o_strings = ['dog', 'deer', 'deal']
+list_o_strings = ['thomas', 'tom', 'thee', 'foam', 'through']
+
+def autocomplete(string_list, prefix) -> list:
+    autocompleteable_list = []
+    for i in range(0, len(string_list)):
+        j = 0
+        while string_list[i][j] == prefix[j]:
+            j += 1
+            # continue
+            if j > len(prefix) - 1:
+                break
+            if string_list[i][j] != prefix[j]:
+                break
+            else:
+                autocompleteable_list.append(string_list[i])
+    
+    return autocompleteable_list
+
+
+autocomplete(list_o_strings, 'th')
