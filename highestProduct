@@ -22,8 +22,7 @@ def highestProduct(ints):
                 else:
                     permutations.append([ints[i], ints[j], ints[k]])
     for permutation in permutations:
-        product = 1 # after adding this line at ca. 15:37, output = 500 Hallelujah (!!!) My lucky number 7
-        # and it only took me seven attempts :)
+        product = 1 
         product *= permutation[0] * permutation[1] * permutation[2]
         if product > max_prod:
             max_prod = product
