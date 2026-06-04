@@ -1,0 +1,26 @@
+"""
+
+Given a collection of intervals, find the minimum number of intervals you need to remove to make the rest of the 
+intervals non-overlapping.
+
+Intervals can "touch", such as [0, 1] and [1, 2], but they won't be considered overlapping.
+
+For example, given the intervals (7, 9), (2, 4), (5, 8), return 1 as the last interval can be removed and the first 
+two won't overlap.
+
+The intervals are not necessarily sorted in any order.
+
+"""
+
+collection = [(7, 9), (2, 4), (5, 8)]
+
+def calcRemov(cllctn):
+    count = 0
+    cllctn.sort()
+    for i in range(0, len(cllctn)):
+        for j in range(i+1, len(cllctn)):
+            if cllctn[i][1] > cllctn[j][0]:
+                count = count + 1
+    return count
+
+calcRemov(collection)
