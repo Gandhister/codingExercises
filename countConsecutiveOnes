@@ -1,0 +1,29 @@
+"""
+
+Given an integer n, return the length of the longest consecutive run of 1s in its binary representation.
+
+For example, given 156, you should return 3.
+
+"""
+
+numero = 156
+
+def cntCnsctv1s(nr):
+    count = 0
+    highest_candidate = 0
+    binary = bin(nr)
+    binary = str(binary)
+    candidates = []
+
+    for char in binary:
+        if char == '1':
+            count = count + 1
+        elif char == '0':
+            candidates.append(count)
+            count = 0
+    highest_candidate = max(candidates)
+    print("Longest consecutive run of 1s: " + str(highest_candidate))
+    return highest_candidate
+
+print(bin(numero))
+cntCnsctv1s(numero)
