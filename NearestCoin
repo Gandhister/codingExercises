@@ -63,16 +63,14 @@ public class NearestCoin {
 					coins.add(new int[]{i, j, dist}); 
 					if(dist <= minDist) {
 						minDist = dist;
+						results.add(new int[] {i, j, dist});
+
 					}
 				}
 			}
 		}
 		
-		for(int i = 0; i < coins.size(); i++) {
-			if(coins.get(i)[2] == minDist) {
-				results.add(coins.get(i));
-			}
-		}
+
 		System.out.println("results: " + Arrays.toString(results.get(0)));
 		return results; 
 	}
