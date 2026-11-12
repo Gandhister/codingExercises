@@ -43,11 +43,13 @@ public class NearestCoin {
 	
 	public static void main(String[] args) {
 		
-		System.out.println((find(0, 2, grid))); // Arrays.toString
+		System.out.println("find(0, 2, grid): ");
+		find(0, 2, grid);
+		// System.out.println("(find(0, 2, grid): " + (find(0, 2, grid))); // Arrays.toString
 	}
 	
-	public static ArrayList<int[]> find(int row, int col, char[][] grid) { 
-
+	public static ArrayList<int[]> find(int row, int col, char[][] grid) { // void int[]
+		
 		// store the coordinates of the coins in an ArrayList because I don't know how many
 		// coins there'll be at the start
 		List<int[]> coins = new ArrayList(); // <Integer>
@@ -63,16 +65,16 @@ public class NearestCoin {
 					coins.add(new int[]{i, j, dist}); 
 					if(dist <= minDist) {
 						minDist = dist;
-						results.add(new int[] {i, j, dist});
-
+						results.add(0, new int[] {i, j}); // , dist
 					}
 				}
 			}
 		}
 		
-
+		
 		System.out.println("results: " + Arrays.toString(results.get(0)));
-		return results; 
+		return results; // .get(0)
+		
+		
 	}
-
 }
