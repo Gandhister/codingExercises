@@ -1,0 +1,50 @@
+package easy_e;
+
+/*
+ 7.10.2026
+ 
+A permutation can be specified by an array P, where P[i] represents the location of the element
+at i in the permutation. For example, [2, 1, 0] represents the permutation where elements at 
+the index 0 and 2 are swapped.
+
+Given an array and a permutation, apply the permutation to the array. For example, given the array
+["a", "b", "c"] and the permutation [2, 1, 0], return ["c", "b", "a"].
+*/
+
+import java.util.Arrays;
+
+public class Permutations {
+
+	
+	public static void main(String[] args) {
+		char[] letters = {'a', 'b', 'c'};
+		int[] permu = {2, 1, 0};
+		int[] permut = {1, 2, 0};
+		
+		System.out.println(Arrays.toString(permute(letters, permu)));
+		System.out.println(Arrays.toString(permute(letters, permut)));
+		
+	}
+	
+	public static char[] permute(char[] chars, int[] perm) {
+		
+		if(chars == null || perm == null) {
+			return null;
+		}
+		
+		char[] reordered = new char[perm.length];
+		
+		if(chars.length == perm.length) {
+			for(int i = 0; i < chars.length; i++) {
+				if(perm[i] >= 0) {
+					reordered[perm[i]] = chars[i];
+				}
+				
+			}
+		} else {
+			return null;
+		  }
+
+    return reordered;
+	}
+}
