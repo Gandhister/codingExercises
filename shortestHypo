@@ -22,16 +22,18 @@ public class shortestHypo {
 		int[][] nearest = new int[2][2];
 		double hypotenuse = 0;
 		double shortestHypo = Double.MAX_VALUE;
+		
+		if(coordin == null) {
+			return null;
+			}
 		for(int i = 0; i < coordin.length; i++) {
 			for(int j = 0; j < coordin.length; j++) {
-				if(coordin == null) {
-					break;
-				}
+				
 				if(i == j) {
 					continue;
 				} else {
-					hypotenuse = Math.sqrt(Math.pow(Math.abs(coordin[i][0] - coordin[j][0]), 2) 
-							+ Math.pow(Math.abs(coordin[i][1] - coordin[j][1]), 2));
+					hypotenuse = Math.sqrt(Math.pow(coordin[i][0] - coordin[j][0], 2) 
+							+ Math.pow(coordin[i][1] - coordin[j][1], 2));
 
 					if(hypotenuse <= shortestHypo) {
 						shortestHypo = hypotenuse;
